@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Función para imprimir mensajes en rojo
+function print_red() {
+  local message="$1"
+  echo -e "\033[31m${message}\033[0m"
+}
+
+# Función para ejecutar neofetch
+function ejecutar_neofetch() {
+  # Verificar si neofetch está instalado
+  if command -v neofetch >/dev/null 2>&1; then
+    print_red "Ejecutando neofetch..."
+    neofetch # Ejecucion del programa Neofetch
+    print_red "Fin de la ejecucion del programa"
+  else
+    print_red "Error: neofetch no está instalado. Instalando neofetch..."
+    # Instalar neofetch si no está instalado
+    if command -v apt >/dev/null 2>&1; then
+      # Para sistemas basados en Debian/Ubuntu
+      print_red "Instalando neofetch usando apt..."
+      sudo apt update
+      sudo apt install -y neofetch
+    elif command -v yum >/dev/null 2>&1; then
+      # Para sistemas basados en RHEL/CentOS
+      print_red "Instalando neofetch usando yum..."
+      sudo yum install -y neofetch
+    elif command -v dnf >/dev/null 2>&1; then
+      # Para sistemas basados en Fedora
+      print_red "Instalando neofetch usando dnf..."
+      sudo dnf install -y neofetch
+    elif command -v pacman >/dev/null 2>&1; then
+      # Para sistemas basados en Arch Linux
+      print_red "Instalando neofetch usando pacman..."
+      sudo pacman -Syu neofetch
+    else
+      print_red "Error: Administrador de paquetes no soportado. Instale neofetch manualmente."
+      exit 1
+    fi
+    # Ejecutar neofetch después de la instalación
+    print_red "Ejecutando neofetch después de la instalación..."
+    neofetch
+  fi
+}
+
+# Llamar a la función
+ejecutar_neofetch
+
+
+
+
+
