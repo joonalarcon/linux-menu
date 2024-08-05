@@ -19,20 +19,20 @@ function ejecutar_neofetch() {
     if command -v apt >/dev/null 2>&1; then
       # Para sistemas basados en Debian/Ubuntu
       print_red "Instalando neofetch usando apt..."
-      sudo apt update
-      sudo apt install -y neofetch
+      sudo apt update -qq > /dev/null 2>&1
+      sudo apt install -y neofetch > /dev/null 2>&1
     elif command -v yum >/dev/null 2>&1; then
       # Para sistemas basados en RHEL/CentOS
       print_red "Instalando neofetch usando yum..."
-      sudo yum install -y neofetch
+      sudo yum install -y neofetch > /dev/null 2>&1
     elif command -v dnf >/dev/null 2>&1; then
       # Para sistemas basados en Fedora
       print_red "Instalando neofetch usando dnf..."
-      sudo dnf install -y neofetch
+      sudo dnf install -y neofetch > /dev/null 2>&1
     elif command -v pacman >/dev/null 2>&1; then
       # Para sistemas basados en Arch Linux
       print_red "Instalando neofetch usando pacman..."
-      sudo pacman -Syu neofetch
+      sudo pacman -Syu neofetch --noconfirm > /dev/null 2>&1
     else
       print_red "Error: Administrador de paquetes no soportado. Instale neofetch manualmente."
       exit 1
@@ -42,3 +42,6 @@ function ejecutar_neofetch() {
     neofetch
   fi
 }
+
+# Llamar a la función
+ejecutar_neofetch
