@@ -11,8 +11,8 @@ function ejecutar_neofetch() {
   # Verificar si neofetch está instalado
   if command -v neofetch >/dev/null 2>&1; then
     print_red "Ejecutando neofetch..."
-    neofetch # Ejecucion del programa Neofetch
-    print_red "Fin de la ejecucion del programa"
+    neofetch # Ejecución del programa Neofetch
+    print_red "Fin de la ejecución del programa"
   else
     print_red "Error: neofetch no está instalado. Instalando neofetch..."
     # Instalar neofetch si no está instalado
@@ -42,11 +42,3 @@ function ejecutar_neofetch() {
     neofetch
   fi
 }
-
-# Llamar a la función
-ejecutar_neofetch
-
-
-
-
-

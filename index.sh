@@ -1,24 +1,11 @@
 #!/bin/bash
 
-# Ruta al archivo de audio
-AUDIO_FILE="./songs/12 Fulgore.mp3"
-
-# Reproduce el audio en segundo plano usando mpv (o cualquier reproductor de audio disponible en Linux)
-mpv --no-terminal "$AUDIO_FILE" &
-
-# Obtén el PID del proceso de reproducción
-AUDIO_PID=$!
-
-function stop_audio {
-  # Detén la reproducción del audio
-  kill "$AUDIO_PID"
-}
-
-trap stop_audio EXIT  # Asegúrate de detener el audio al salir del script
+# Incluye el archivo externo con las funciones
+source "./informacion_sistema.sh"
 
 # Función para mostrar el menú
 function show_menu {
-  echo "1. Opción 1"
+  echo "1. Información del sistema"
   echo "2. Opción 2"
   echo "3. Opción 3"
   echo "4. Opción 4"
@@ -35,7 +22,8 @@ while true; do
 
   case $option in
     1)
-      echo "Has seleccionado la opción 1."
+      echo "Informacion de Sistema."
+      ejecutar_neofetch # Ejecucion de Neofetch
       ;;
     2)
       echo "Has seleccionado la opción 2."
@@ -56,6 +44,7 @@ while true; do
       echo "Has seleccionado la opción 7."
       ;;
     8)
+      echo clear
       echo "Saliendo..."
       break
       ;;
