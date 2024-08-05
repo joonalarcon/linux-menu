@@ -13,6 +13,7 @@ function ejecutar_neofetch() {
     print_red "Ejecutando neofetch..."
     neofetch # Ejecución del programa Neofetch
     print_red "Fin de la ejecución del programa"
+    echo clear
   else
     print_red "Error: neofetch no está instalado. Instalando neofetch..."
     # Instalar neofetch si no está instalado
@@ -39,9 +40,9 @@ function ejecutar_neofetch() {
     fi
     # Ejecutar neofetch después de la instalación
     print_red "Ejecutando neofetch después de la instalación..."
+    echo clear
     neofetch
   fi
 }
 
-# Llamar a la función
-ejecutar_neofetch
+
